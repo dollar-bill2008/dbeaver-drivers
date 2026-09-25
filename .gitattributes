@@ -1,0 +1,6 @@
+# Jars are zip archives; line-ending normalisation would corrupt them and
+# the SHA-256 manifest check after clone would fail. Poms are XML, fine as LF.
+*.jar binary
+*.pom text eol=lf
+*.md  text eol=lf
+MANIFEST.sha256 text eol=lf

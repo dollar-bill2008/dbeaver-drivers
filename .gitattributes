@@ -1,6 +1,8 @@
-# Jars are zip archives; line-ending normalisation would corrupt them and
-# the SHA-256 manifest check after clone would fail. Poms are XML, fine as LF.
-*.jar binary
-*.pom text eol=lf
-*.md  text eol=lf
-MANIFEST.sha256 text eol=lf
+# The payload must arrive byte-for-byte: MANIFEST.sha256 was generated from
+# the originals, and seven of the poms are CRLF as served by Maven Central.
+# Marking everything under maven-central/ binary stops git normalising any of
+# it. The manifest itself is binary too, so sha256sum -c parses it cleanly.
+maven-central/** binary
+MANIFEST.sha256 binary
+*.md text eol=lf
+.gitattributes text eol=lf
